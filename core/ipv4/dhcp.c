@@ -1005,6 +1005,12 @@ dhcp_discover(struct netif *netif)
     options_out_len = dhcp_option(options_out_len, msg_out->options, DHCP_OPTION_MAX_MSG_SIZE, DHCP_OPTION_MAX_MSG_SIZE_LEN);
     options_out_len = dhcp_option_short(options_out_len, msg_out->options, DHCP_MAX_MSG_LEN(netif));
 
+    options_out_len = dhcp_option(options_out_len, msg_out->options, DHCP_OPTION_CLIENT_ID, 7);
+    options_out_len = dhcp_option_byte(options_out_len, msg_out->options, 0x01); /* ethernet */
+    for (int i = 0; i < 6; i++) {
+        options_out_len = dhcp_option_byte(options_out_len, msg_out->options, netif->hwaddr[i]);
+    }
+
     options_out_len = dhcp_option(options_out_len, msg_out->options, DHCP_OPTION_PARAMETER_REQUEST_LIST, LWIP_ARRAYSIZE(dhcp_discover_request_options));
     for (i = 0; i < LWIP_ARRAYSIZE(dhcp_discover_request_options); i++) {
       options_out_len = dhcp_option_byte(options_out_len, msg_out->options, dhcp_discover_request_options[i]);
