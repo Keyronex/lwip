@@ -23,6 +23,7 @@
 #define LWIP_PBUF_CUSTOM_DATA STAILQ_ENTRY(pbuf) stailq_entry;
 
 #define LWIP_NETIF_API 1
+#define LWIP_SOCKET 0
 
 #define LWIP_TIMERS 1
 

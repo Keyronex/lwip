@@ -40,6 +40,8 @@
 #ifndef LWIP_HDR_INET_H
 #define LWIP_HDR_INET_H
 
+#include <abi-bits/in.h>
+
 #include "lwip/opt.h"
 #include "lwip/def.h"
 #include "lwip/ip_addr.h"
@@ -49,6 +51,7 @@
 extern "C" {
 #endif
 
+#if 0 /* provided by mlibc on Keyronex */
 /* If your port already typedef's in_addr_t, define IN_ADDR_T_DEFINED
    to prevent this code from redefining it. */
 #if !defined(in_addr_t) && !defined(IN_ADDR_T_DEFINED)
@@ -129,6 +132,8 @@ extern const struct in6_addr in6addr_any;
 #define INET6_ADDRSTRLEN    IP6ADDR_STRLEN_MAX
 #endif
 #endif
+
+#endif /* #if 0 (provided by mlibc on Keyronex) */
 
 #if LWIP_IPV4
 
