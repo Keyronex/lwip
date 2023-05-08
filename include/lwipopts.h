@@ -3,6 +3,7 @@
 
 #include <abi-bits/errno.h>
 #include <kdk/kernel.h>
+#include <kdk/libkern.h>
 #include <bsdqueue/queue.h>
 
 #undef errno
