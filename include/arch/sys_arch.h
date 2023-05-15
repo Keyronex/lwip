@@ -11,12 +11,10 @@
 extern "C" {
 #endif
 
-/* can we do spl here instead? */
-
-#define SYS_ARCH_PROTECT(x) ke_wait(&x, "lwip_arch_rprotect", false, false, -1)
-#define SYS_ARCH_UNPROTECT(x) ke_mutex_release(&x)
+#define SYS_ARCH_PROTECT(x) ipl_##x = ke_spinlock_acquire(&x);
+#define SYS_ARCH_UNPROTECT(x) ke_spinlock_release(&x, ipl_##x)
 /* is this right? */
-#define SYS_ARCH_DECL_PROTECT(x) static kmutex_t x = KMUTEX_INITIALIZER(x);
+#define SYS_ARCH_DECL_PROTECT(x) static kspinlock_t x = KSPINLOCK_INITIALISER; static ipl_t ipl_##x;
 
 typedef ksemaphore_t sys_sem_t;
 typedef kmutex_t     sys_mutex_t;

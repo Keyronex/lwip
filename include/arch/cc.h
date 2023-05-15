@@ -35,7 +35,7 @@ extern "C" {
 	do {                                                               \
 		kdprintf("Assertion \"%s\" failed at %s:%d\n", x, __FILE__, \
 		    __LINE__);                                             \
-		kfatal("fatal in lwip");                                   \
+		kfatal("fatal in lwip\n");                                   \
 	} while (0)
 #endif
 #ifdef __cplusplus
