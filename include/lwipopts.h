@@ -11,7 +11,10 @@
 
 #if 1
 #define LWIP_DEBUG 1
-#define TCP_DEBUG                       LWIP_DBG_ON
+//#define MEMP_DEBUG LWIP_DBG_ON
+//#define TCP_DEBUG                       LWIP_DBG_ON
+//#define TCP_INPUT_DEBUG LWIP_DBG_ON
+//#define TCP_OUTPUT_DEBUG LWIP_DBG_ON
 //#define ETHARP_DEBUG                    LWIP_DBG_ON
 //#define PBUF_DEBUG                      LWIP_DBG_ON
 //#define IP_DEBUG                        LWIP_DBG_ON
@@ -29,6 +32,16 @@
 #define LWIP_TIMERS 1
 
 #define TCPIP_MBOX_SIZE 256
+
+#if 0
+#define MEM_SIZE 1024  * 1024
+#define TCP_MSS 1460
+#define TCP_WND 4096 * 16 - 1
+#define MEMP_NUM_PBUF 256
+#define MEMP_NUM_TCPIP_MSG_INPKT 64
+#define MEMP_NUM_TCPIP_MSG_API 64
+#define PBUF_POOL_SIZE 64
+#endif
 
 #if 0
 #define LWIP_DHCP 1
