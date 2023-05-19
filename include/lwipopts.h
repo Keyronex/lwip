@@ -26,10 +26,15 @@
 /*! We chain pbufs in ethernet device output queues. */
 #define LWIP_PBUF_CUSTOM_DATA STAILQ_ENTRY(pbuf) stailq_entry;
 
+#define LWIP_TIMERS 1
 #define LWIP_NETIF_API 1
 #define LWIP_SOCKET 0
+#define LWIP_RAW 1
+#define LWIP_STATS 1
+#define MIB2_STATS 1
 
-#define LWIP_TIMERS 1
+
+#define LWIP_CHECKSUM_ON_COPY 1
 
 #define TCPIP_MBOX_SIZE 256
 
@@ -41,14 +46,9 @@
 #define MEMP_NUM_TCPIP_MSG_INPKT 64
 #define MEMP_NUM_TCPIP_MSG_API 64
 #define PBUF_POOL_SIZE 64
+#define MEMP_USE_CUSTOM_POOLS 1
+#define MEM_USE_POOLS 1
 #endif
 
-#if 0
-#define LWIP_DHCP 1
-#define LWIP_DNS 1
-#define LWIP_SOCKET 1
-
-#define LWIP_NETIF_API 1
-#endif
 
 #endif /* KRX_INCLUDE_LWIPOPTS_H */

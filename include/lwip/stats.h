@@ -120,6 +120,7 @@ struct stats_sys {
   struct stats_syselem mbox;
 };
 
+#define u32_t u64_t
 /** SNMP MIB2 stats */
 struct stats_mib2 {
   /* IP */
@@ -227,6 +228,7 @@ struct stats_mib2_netif_ctrs {
    * transmission units that could not be transmitted because of errors. */
   u32_t ifouterrors;
 };
+#undef u32_t
 
 /** lwIP stats container */
 struct stats_ {
